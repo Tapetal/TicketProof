@@ -59,13 +59,13 @@ export default function RootLayout({
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#6C63FF] to-[#FFB400] rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
                   <span className="text-xl md:text-2xl">🎫</span>
                 </div>
-                <span className="text-xl md:text-2xl font-bold text-white">
+                <span className="text-lg sm:text-xl md:text-2xl font-bold text-white">
                   Ticket<span className="text-[#FFB400]">Proof</span>
                 </span>
               </Link>
               
-              {/* Nav Links - Hide on mobile, show on md+ */}
-              <div className="hidden md:flex items-center gap-8">
+              {/* Desktop Nav Links - Hide on mobile (below lg) */}
+              <div className="hidden lg:flex items-center gap-8">
                 <Link 
                   href="/events" 
                   className="text-[#D1D5DB] hover:text-white transition-colors font-medium relative group"
@@ -92,35 +92,38 @@ export default function RootLayout({
                 <WalletConnect />
               </div>
 
-              {/* Mobile Menu - Show on mobile only */}
-              <div className="flex md:hidden items-center gap-2">
+              {/* Mobile - Only Wallet Button */}
+              <div className="lg:hidden">
                 <WalletConnect />
-              </div>
-            </div>
-
-            {/* Mobile Bottom Nav - Show on mobile only */}
-            <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0B0B14]/95 backdrop-blur-md border-t border-[#6C63FF]/20 z-50">
-              <div className="flex justify-around items-center py-3">
-                <Link href="/events" className="flex flex-col items-center gap-1 text-[#D1D5DB] hover:text-[#FFB400] transition-colors">
-                  <span className="text-xl">🎪</span>
-                  <span className="text-xs font-medium">Events</span>
-                </Link>
-                <Link href="/tickets" className="flex flex-col items-center gap-1 text-[#D1D5DB] hover:text-[#FFB400] transition-colors">
-                  <span className="text-xl">🎫</span>
-                  <span className="text-xs font-medium">Tickets</span>
-                </Link>
-                <Link href="/profile" className="flex flex-col items-center gap-1 text-[#D1D5DB] hover:text-[#FFB400] transition-colors">
-                  <span className="text-xl">👤</span>
-                  <span className="text-xs font-medium">Profile</span>
-                </Link>
               </div>
             </div>
           </div>
         </nav>
 
         {/* Main Content */}
-        <div className="pb-20 md:pb-0">
+        <div className="pb-20 lg:pb-0">
           {children}
+        </div>
+
+        {/* Scroll to Top Button */}
+        <ScrollToTop />
+
+        {/* Mobile Bottom Navigation - Only show on mobile (below lg) */}
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#0B0B14]/95 backdrop-blur-md border-t border-[#6C63FF]/20 z-50 safe-area-inset-bottom">
+          <div className="flex justify-around items-center py-3 px-2">
+            <Link href="/events" className="flex flex-col items-center gap-1 text-[#D1D5DB] hover:text-[#FFB400] transition-colors min-w-0 flex-1">
+              <span className="text-xl">🎪</span>
+              <span className="text-xs font-medium">Events</span>
+            </Link>
+            <Link href="/tickets" className="flex flex-col items-center gap-1 text-[#D1D5DB] hover:text-[#FFB400] transition-colors min-w-0 flex-1">
+              <span className="text-xl">🎫</span>
+              <span className="text-xs font-medium">Tickets</span>
+            </Link>
+            <Link href="/profile" className="flex flex-col items-center gap-1 text-[#D1D5DB] hover:text-[#FFB400] transition-colors min-w-0 flex-1">
+              <span className="text-xl">👤</span>
+              <span className="text-xs font-medium">Profile</span>
+            </Link>
+          </div>
         </div>
 
         {/* Footer */}
