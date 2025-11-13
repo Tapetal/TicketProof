@@ -109,7 +109,7 @@ export default function RootLayout({
         <ScrollToTop />
 
         {/* Mobile Bottom Navigation - Only show on mobile (below lg) */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#0B0B14]/95 backdrop-blur-md border-t border-[#6C63FF]/20 z-50 safe-area-inset-bottom">
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#0B0B14]/95 backdrop-blur-md border-t border-[#6C63FF]/20 z-50 safe-bottom">
           <div className="flex justify-around items-center py-3 px-2">
             <Link href="/events" className="flex flex-col items-center gap-1 text-[#D1D5DB] hover:text-[#FFB400] transition-colors min-w-0 flex-1">
               <span className="text-xl">🎪</span>
