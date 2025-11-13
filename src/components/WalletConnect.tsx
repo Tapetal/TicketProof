@@ -191,7 +191,7 @@ export default function WalletConnect({ onConnect, onDisconnect }: WalletConnect
       <button
         onClick={() => setShowDropdown(!showDropdown)}
         disabled={isConnecting}
-        className="flex items-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex items-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white px-4 sm:px-6 py-2 rounded-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base leading-none flex-shrink-0"
       >
         <Wallet className="w-4 h-4" />
         <span className="font-medium">
