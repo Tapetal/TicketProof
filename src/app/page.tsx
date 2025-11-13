@@ -260,7 +260,7 @@ export default function Home() {
       </div>
 
       {/* Trust Indicators */}
-      <div className="container mx-auto px-4 pb-20">
+      <div className="container mx-auto px-4 pb-8 md:pb-12 lg:pb-16">
         <div className="text-center mb-10">
           <p className="text-[#D1D5DB] text-base">
             Trusted by event organizers worldwide
