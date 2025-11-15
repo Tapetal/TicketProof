@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Toaster } from 'react-hot-toast';
 import WalletConnect from '@/components/WalletConnect';
 import ScrollToTop from '@/components/ScrollToTop';
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -240,6 +241,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
