@@ -82,6 +82,24 @@ export default function ProfilePage() {
     }
   };
 
+  // Helper function to get unlock requirement text
+  const getUnlockRequirement = (badge: typeof BADGES[0]) => {
+    if (badge.criteria.type === 'tickets_purchased') {
+      const remaining = badge.criteria.threshold! - totalTickets;
+      if (remaining > 0) {
+        return `Purchase ${remaining} more ticket${remaining > 1 ? 's' : ''} to unlock`;
+      }
+    } else if (badge.criteria.type === 'events_attended') {
+      const remaining = badge.criteria.threshold! - eventsAttended;
+      if (remaining > 0) {
+        return `Attend ${remaining} more event${remaining > 1 ? 's' : ''} to unlock`;
+      }
+    } else if (badge.criteria.type === 'special') {
+      return 'Special achievement - Limited availability';
+    }
+    return '';
+  };
+
   // Not connected state
   if (!walletAddress) {
     return (
@@ -265,14 +283,15 @@ export default function ProfilePage() {
               <div className="grid md:grid-cols-3 gap-4">
                 {BADGES.map((badge) => {
                   const isEarned = earnedBadges.some(b => b.id === badge.id);
+                  const unlockRequirement = getUnlockRequirement(badge);
 
                   return (
                     <div
                       key={badge.id}
-                      className={`relative bg-[#0B0B14] border-2 rounded-xl p-4 text-center transition-all ${
+                      className={`relative bg-[#0B0B14] border-2 rounded-xl p-4 text-center transition-all group ${
                         isEarned
                           ? 'border-[#6C63FF]/50 hover:border-[#6C63FF] hover:shadow-[0_0_20px_rgba(108,99,255,0.3)]'
-                          : 'border-[#6C63FF]/10 opacity-40 grayscale'
+                          : 'border-[#6C63FF]/10 opacity-40 grayscale cursor-help'
                       }`}
                     >
                       {/* Rarity Indicator */}
@@ -292,9 +311,37 @@ export default function ProfilePage() {
                       </p>
                       
                       {!isEarned && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-2xl">🔒</div>
-                        </div>
+                        <>
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="text-2xl">🔒</div>
+                          </div>
+                          
+                          {/* Hover Tooltip */}
+                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                            <div className="bg-[#1A1B2E] border-2 rounded-lg p-3 shadow-xl min-w-[200px] max-w-[250px]"
+                              style={{ borderColor: getRarityColor(badge.rarity) }}
+                            >
+                              {/* Arrow */}
+                              <div 
+                                className="absolute top-full left-1/2 -translate-x-1/2 -mt-[2px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px]"
+                                style={{ borderTopColor: getRarityColor(badge.rarity) }}
+                              />
+                              
+                              <p className="text-xs font-semibold text-white mb-1">
+                                {badge.name}
+                              </p>
+                              <p className="text-xs text-[#D1D5DB] mb-2">
+                                {badge.description}
+                              </p>
+                              <div 
+                                className="text-xs font-semibold pt-2 border-t border-[#6C63FF]/20"
+                                style={{ color: getRarityColor(badge.rarity) }}
+                              >
+                                🎯 {unlockRequirement}
+                              </div>
+                            </div>
+                          </div>
+                        </>
                       )}
                     </div>
                   );

@@ -101,7 +101,7 @@ export default function RootLayout({
         </nav>
 
         {/* Main Content */}
-        <div className="pb-20 lg:pb-0">
+        <div className="pb-5 lg:pb-0">
           {children}
         </div>
 
@@ -127,7 +127,7 @@ export default function RootLayout({
         </div>
 
         {/* Footer */}
-        <footer className="bg-[#0B0B14] border-t border-[#6C63FF]/20 text-white py-12 mt-16">
+        <footer className="bg-[#0B0B14] border-t border-[#6C63FF]/20 text-white py-12 mt-10">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 mb-8">
               {/* Brand */}
