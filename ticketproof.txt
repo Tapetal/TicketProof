@@ -1,0 +1,114 @@
+🎯 RECOMMENDED STACK:
+Frontend:       Next.js 14 (App Router) + TypeScript + Tailwind CSS
+Backend:        Next.js API Routes (serverless functions)
+Database:       Firebase Firestore
+Blockchain:     Hedera Hashgraph (HTS for NFT tickets)
+Wallet:         HashPack Wallet / Blade Wallet
+Auth:           Firebase Auth + Wallet Connection
+Deployment:     Vercel (one-click deploy for Next.js)
+File Storage:   Firebase Storage (for event images)
+
+ticketproof/
+├── .next/
+├── node_modules/
+├── public/
+│   └── assets/
+│       ├── logo.svg
+│       └── placeholder-event.jpg
+├── src/
+│   ├── app/
+│   │   ├── api/                    # Backend API routes
+│   │   │   ├── events/
+│   │   │   │   ├── route.ts        # GET user tickets
+│   │   │   │   └── [id]/
+│   │   │   │       └── route.ts
+│   │   │   ├── tickets/
+│   │   │   │   ├── route.ts        # GET user tickets
+│   │   │   │   └── mint/
+│   │   │   │       └── route.ts    # POST mint ticket
+│   │   │   └── badges/
+│   │   │       └── route.ts        # Gamification tracking
+│   │   ├── events/
+│   │   │   ├── [id]/
+│   │   │   │   └── page.tsx        # Event detail page
+│   │   │   ├── create/
+│   │   │   │   └── page.tsx        # Create event (organizer)
+│   │   │   └── page.tsx            # My Event page
+│   │   ├── tickets/
+│   │   │   └── page.tsx            # My Tickets page
+│   │   ├── profile/
+│   │   │   └── page.tsx            # User profile + badges
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx                # Home (event listings)
+│   ├── components/
+│   │   ├── ui/                     # Reusable UI components
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   └── Modal.tsx
+│   │   ├── EventCard.tsx           # Event listing card
+│   │   ├── EmptyState.tsx   		 #
+│   │   ├── ErrorMessage.tsx   		 #
+│   │   ├── LoadingSkeleton.tsx   	 #
+│   │   ├── OptimizedImage.tsx   	 #
+│   │   ├── ScrollToTop.tsx   		 #
+│   │   ├── TicketNFT.tsx           # Visual ticket display
+│   │   ├── WalletConnect.tsx       # Wallet connection
+│   │   ├── PurchaseModal.tsx       # Buy ticket modal
+│   │   ├── BadgeDisplay.tsx        # Gamification badges
+│   │   ├── BadgeNotification.tsx   # Badge Notification
+│   │   └── Navbar.tsx              # Navigation
+│   ├── lib/
+│   │   ├── firebase.ts             # Firebase config
+│   │   ├── hedera.ts               # Hedera SDK setup
+│   │    ├── utils.ts               #
+│   │   ├── utils.ts                # Helper functions
+│   │   ├── badges.ts               # Helper functions
+│   │   └── constants.ts            # App constants
+│   ├── types/
+│   │   ├── event.ts                # Event types
+│   │   ├── ticket.ts               # Ticket types
+│   │   └── user.ts                 # User types
+│   └── hooks/
+│       ├── useWallet.ts            # Wallet hook
+│       └── useEvents.ts            # Events data hook
+├── .env.local                      # Environment variables (CREATE THIS!)
+├── .gitignore
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+├── README.md
+└── tsconfig.json
+
+🔥 READY TO START?
+With this stack, you can build:
+
+Day 1-2: Project setup + basic UI
+Day 3-5: Core ticketing flow
+Day 6-7: Hedera NFT integration
+Day 8-10: Gamification + polish
+Day 11+: Demo video + pitch deck
+
+
+Optional Enhancements for Hackathon Impact:
+
+Highlight the NFT token ID on the ticket card alongside QR code — judges love seeing the on-chain proof.
+
+Show metadata or event image (if you have it) to make the NFT feel more “collectible.”
+
+Include a small animation when a badge is earned — adds polish to your demo video.
+
+Explain in your demo that the QR code is tied to the NFT, making the connection clear between on-chain NFT and off-chain usability.
+
+
+
+💡 BONUS FEATURES (If Time):
+Want to add any of these?
+
+🎨 Dark/light theme toggle
+📧 Email notifications for events
+🔔 Push notifications
+💬 Event comments/reviews
+🎁 Referral rewards
+📊 Organizer dashboard
